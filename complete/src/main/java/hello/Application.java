@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application implements CommandLineRunner {
 
 	@Autowired
-	private CustomerRepository repository;
+	private ModelloRepository repository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -17,29 +17,30 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		repository.deleteAll();
-
+		System.out.println("no delete");
+		//repository.deleteAll();
+		// aggiungo un commento
+		// secondo commento
 		// save a couple of customers
-		repository.save(new Customer("Alice", "Smith"));
-		repository.save(new Customer("Bob", "Smith"));
+		repository.save(new Modello("Modello 1", "Modello 1"));
+		repository.save(new Modello("Modello 2", "Modello 2"));
 
 		// fetch all customers
-		System.out.println("Customers found with findAll():");
+		System.out.println("Modelli found with findAll():");
 		System.out.println("-------------------------------");
-		for (Customer customer : repository.findAll()) {
+		for (Modello customer : repository.findAll()) {
 			System.out.println(customer);
 		}
-		System.out.println();
+		System.out.println("prova");
 
 		// fetch an individual customer
-		System.out.println("Customer found with findByFirstName('Alice'):");
+		System.out.println("Modello found with findByFirstName('Alice'):");
 		System.out.println("--------------------------------");
 		System.out.println(repository.findByFirstName("Alice"));
 
-		System.out.println("Customers found with findByLastName('Smith'):");
+		System.out.println("Modelli found with findByLastName('Smith'):");
 		System.out.println("--------------------------------");
-		for (Customer customer : repository.findByLastName("Smith")) {
+		for (Modello customer : repository.findByLastName("Smith")) {
 			System.out.println(customer);
 		}
 
